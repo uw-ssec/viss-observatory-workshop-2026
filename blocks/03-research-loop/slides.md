@@ -142,9 +142,11 @@ spectrum = cube["SKY"].sum(["l", "m"])       # / beam area -> Jy: a double horn
 ```
 
 Then project the moment-0 map onto the sky with **astrowidget**, over the
-optical Digitized Sky Survey (DSS), and step from one horn's channel to the
-other's (`sky.update_slice(0, 4)`, then `21`): the emission walks along the
-disk. That's the rotation.
+optical Digitized Sky Survey (DSS): the whole ring is atomic hydrogen in the
+galaxy's disk (the bright spot beside it is an unrelated point source, with
+some artifacts). Step from one horn's channel to the other's
+(`sky.update_slice(0, 4)`, then `21`): the emission walks along the disk.
+That's the rotation.
 
 **Stretch:** ask the agent to estimate the HI mass from the integrated flux,
 assuming Hubble flow, and **check its constants** before you believe it.

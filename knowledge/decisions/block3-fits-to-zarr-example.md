@@ -3,7 +3,7 @@ type: Decision
 title: "Block 3 example: agent-driven FITS to Zarr, verified, then used for moment 0"
 description: "Block 3 converts a forward-modeled DSA FITS cube to Zarr with an agent and the fits-to-zarr skill, verifies it, then makes a moment-0 map and spectrum shown in astrowidget over DSS."
 tags: [block-3, fits, zarr, astrowidget, curriculum]
-generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-15T21:00:02Z" }
+generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-15T22:16:18Z" }
 status: stable
 code_refs: ["blocks/03-research-loop/**"]
 ---
@@ -40,6 +40,11 @@ code_refs: ["blocks/03-research-loop/**"]
 - No continuum subtraction for the map: the line fills nearly the whole band;
   the notebook says so. The spectrum removes a continuum level from the band
   edges.
+- What the map is meant to show (Casey, 2026-10-15, confirming the rendered
+  map is as expected): the **whole HI ring**, atomic hydrogen gas in the
+  galaxy's disk. The brightest spot is an **unrelated point source** near the
+  galaxy, which produces some artifacts; the notebook and slides say this
+  rather than calling the map noisy.
 - Server-side compute stays one sentence (same code against Zarr in object
   storage), not a section; a real remote-compute demo would overrun the slot.
 - Wording: the data is a **forward-modeled DSA** cube, not OVRO-LWA data.

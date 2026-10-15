@@ -1,4 +1,5 @@
 ## 2026-10-15
+* **Update**: Updated concept `decisions/block3-fits-to-zarr-example.md`.
 * **Update**: Updated concept `requirements/block3-data.md`.
 * **Update**: Updated concept `decisions/block3-fits-to-zarr-example.md`.
 * **Update**: Updated concept `facts/astrowidget-usage.md`.
