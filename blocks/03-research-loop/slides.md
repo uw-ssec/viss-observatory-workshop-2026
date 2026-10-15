@@ -24,7 +24,7 @@ So how do you systematically write good prompts for hard, multi-step research ta
 
 > You don't write better one-shot prompts. You build **workflows**.
 >
-> A workflow is a templated, named, reusable instruction that lives next to your code and produces an auditable artifact. 
+> A workflow is a templated, named, reusable instruction that lives next to your code and produces an auditable artifact.
 
 ---
 
@@ -243,7 +243,7 @@ You just watched seven Copilot **skills** do this:
 
 - A **`description`** per skill (the `Use when…` clause the agent matches on)
 - **Tool constraints in prose** (e.g. `explore-data`'s "Read-only on the source data")
-- **Project memory** via `AGENTS.md` 
+- **Project memory** via `AGENTS.md`
 - **Output convention**: write a markdown artifact to `docs/`
 
 That's all a skill is. A markdown file, no magic.

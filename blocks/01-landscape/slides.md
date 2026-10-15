@@ -20,7 +20,7 @@ description: "Coding with AI Agents"
 
 - 18 months ago: **autocomplete**. The IDE finished your line.
 - Today: **agents**. They read the codebase, plan, edit files, run tests, debug, iterate.
-- Same models, mostly. 
+- Same models, mostly.
 - *What changed is the loop wrapped around them. What the industry calls it the agent "harness."*
 - This workshop primarily builds intuition about that loop.
 

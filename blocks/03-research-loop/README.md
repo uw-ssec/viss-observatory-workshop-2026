@@ -1,7 +1,7 @@
 # Block 3: Agent-Driven Research Software Engineering
 
 **Duration:** ~30 minutes
-**Tool focus:** **GitHub Copilot Chat** (agent mode) driven by workshop **skills** that live in [`.github/skills/`](../../.github/skills/): `profile-dataset`, `plan-analysis`, `explore-data`, `statistical-tests`, `draft-report`, `validate-analysis`, and `handoff`. 
+**Tool focus:** **GitHub Copilot Chat** (agent mode) driven by workshop **skills** that live in [`.github/skills/`](../../.github/skills/): `profile-dataset`, `plan-analysis`, `explore-data`, `statistical-tests`, `draft-report`, `validate-analysis`, and `handoff`.
 
 ## Learning goals
 
@@ -32,7 +32,7 @@ By the end of this block, an attendee can:
 
 ### Run the demo
 
-This is a **live, instructor-led demo**. 
+This is a **live, instructor-led demo**.
 
 1. Open **Copilot Chat** and switch the picker to **Agent** mode.
 2. Wipe any leftover artifacts from prior runs (from the repo root): `rm -rf blocks/03-research-loop/demo/docs/`.

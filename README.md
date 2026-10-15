@@ -92,6 +92,19 @@ The [`.github/`](.github/) folder is a **worked gallery** of ways to customize a
 - Slides are written for the **Marp for VS Code** extension (preinstalled in the Codespace). Open any `slides.md` and click the preview icon.
 
 
+## Maintaining this repository
+
+> **Participants can skip this section.** Nothing here is needed to follow the workshop.
+
+The repo tooling is adapted from [`uw-ssec/project-template`](https://github.com/uw-ssec/project-template):
+
+- **uv** owns the workshop's Python environment (`pyproject.toml`, `uv.lock`), and **[Pixi](https://pixi.sh)** owns maintainer tooling (`pixi.toml`): pre-commit, the GitHub CLI, and the `okf` project-memory CLI. Run `pixi install`, then `pixi run pre-commit-install`; run `pixi run pre-commit-all` before opening a PR.
+- [`AGENTS.md`](AGENTS.md) (and `CLAUDE.md`, which imports it) is the entry point for AI agents working **on** this repo. It points to on-demand rules in [`.agents/rules/`](.agents/rules/).
+- [`.agents/skills/`](.agents/skills/) holds maintainer skills (`commit`, `create-pr`, `okf-memory`, ...), linked from `.claude/skills`. These are separate from the participant-facing Copilot gallery in `.github/`.
+- [`knowledge/`](knowledge/) is OKF project memory, read and written with `pixi run okf`.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), and the [AI Policy](AI_POLICY.md) if you use AI tools while contributing.
+
 ## Contact
 
 - **Anshul Tambay**, UW SSEC, [anshul37@uw.edu](mailto:anshul37@uw.edu)

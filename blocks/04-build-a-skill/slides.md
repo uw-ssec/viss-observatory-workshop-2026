@@ -79,8 +79,8 @@ Full instructions: [`blocks/04-build-a-skill/exercise/README.md`](../../blocks/0
 You now have:
 
 - A mental model that survives the next product release from a frontier AI lab
-- A concrete agentic workflow you've seen run on real data 
-- A custom agent you wrote yourself that **lives in your Codespace** 
+- A concrete agentic workflow you've seen run on real data
+- A custom agent you wrote yourself that **lives in your Codespace**
 
 
 > Thank you for spending the afternoon with us.

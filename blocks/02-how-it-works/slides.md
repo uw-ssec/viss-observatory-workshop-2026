@@ -49,7 +49,7 @@ Pre-training, SFT, RLHF, every stage in this block assumes one thing: that a neu
 **Universal Approximation Theorem** (Cybenko 1989, Hornik 1991): a network with a non-linear activation and enough neurons can approximate *any* continuous function to arbitrary precision.
 
 - "Next token given context", "helpful reply given prompt", "tool call given task", all just functions.
-- The **non-linearity** (ReLU, etc.) is the key ingredient. 
+- The **non-linearity** (ReLU, etc.) is the key ingredient.
 - **Depth** is what makes it *efficient*: deep nets compose simple features into complex ones, instead of needing astronomically many neurons in one layer.
 
 --
@@ -260,7 +260,7 @@ When debugging an agent, ask:
 
 > _"Is this a **training problem** (model X just can't do this), or a **prompt problem** (it could if I told it better)?"_
 
-**The prompt side is the only lever you can control**. 
+**The prompt side is the only lever you can control**.
 
 ---
 

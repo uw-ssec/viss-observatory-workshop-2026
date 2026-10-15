@@ -37,3 +37,7 @@ slides.pptx
 .env.*
 !.env.example
 .aws/
+
+# pixi environments (maintainer tooling)
+.pixi/*
+!.pixi/config.toml
