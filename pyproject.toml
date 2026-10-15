@@ -3,16 +3,18 @@ name = "coding-with-agents-workshop"
 version = "0.1.0"
 description = "Coding with AI Agents: A Hands-On Workshop for Scientists"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.14"
 license = { text = "MIT" }
 authors = [
     { name = "UW Scientific Software Engineering Center" },
 ]
 dependencies = [
+    "astrowidget==0.2.0",
     "ipykernel>=6.29.0",
     "litellm>=1.50.0",
     "matplotlib>=3.9.0",
     "numpy>=2.0.0",
+    "ovro-lwa-portal",
     "pandas>=3.0.3",
     "pint>=0.24.0",
     "pytest>=8.3.0",
@@ -20,11 +22,13 @@ dependencies = [
     "scipy>=1.17.1",
     "statsmodels>=0.14.6",
     "workshop-agent",
+    "zarr>=2.18.7,<3",
 ]
 
 [dependency-groups]
 dev = [
     "mypy>=1.11.0",
+    "nbclient>=0.10",
     "ruff>=0.6.0",
 ]
 
@@ -34,6 +38,7 @@ package = false
 [tool.uv.sources]
 sci-units = { path = "blocks/01-landscape/demo/starter", editable = true }
 workshop-agent = { path = "workshop_agent", editable = true }
+ovro-lwa-portal = { git = "https://github.com/ovro-lwa/ovro-lwa-portal", rev = "809aaf4" }
 
 [tool.ruff]
 line-length = 100

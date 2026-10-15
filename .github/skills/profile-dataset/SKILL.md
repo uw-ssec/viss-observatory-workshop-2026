@@ -1,6 +1,6 @@
 ---
 name: profile-dataset
-description: 'Document a dataset and its study design exactly as they are — shape, columns, dtypes, ranges, missingness, and the stated hypothesis — and write the findings to docs/. Use when someone hands you a dataset (a CSV/TSV/parquet + maybe an AGENTS.md) and wants to understand what they are working with before any analysis. Phase 1 of the analysis workflow.'
+description: 'Document a dataset and its study design exactly as they are — shape, columns, dtypes, ranges, missingness, and the stated hypothesis — and write the findings to docs/. Use when someone hands you a dataset (a CSV/TSV/parquet, or a folder of FITS images, + maybe an AGENTS.md) and wants to understand what they are working with before any analysis. Phase 1 of the analysis workflow.'
 argument-hint: '[dataset path] (defaults to the open file)'
 ---
 
@@ -32,7 +32,11 @@ Your only job is to **document and describe** the dataset and its study design.
 ## Steps
 
 1. **Read `AGENTS.md` first** (if present), then the dataset. For a large file,
-   read the header plus a sample of rows — say so if you sampled.
+   read the header plus a sample of rows — say so if you sampled. For a **folder
+   of FITS images**, profile the headers instead of rows: file count and naming,
+   image size, WCS axes (`CTYPE*`, `CRVAL*`, `CDELT*`), frame (`RADESYS`,
+   `EQUINOX`), frequency and time keywords, `BUNIT`, beam, and which values vary
+   across files (`astropy.io.fits.getheader`; no need to load pixel data).
 2. **Describe the shape and structure:** rows × columns; is it wide or long/tidy;
    what is the unit of observation (one row = one what?).
 3. **Describe each column:** name, inferred dtype, meaning (from `AGENTS.md` or the
@@ -81,4 +85,4 @@ quote the source; do not infer a test>
 - Keep the artifact self-contained: a reader should understand the dataset from it
   alone.
 
-Next phase: hand this to `plan-analysis`.
+Next phase: hand this to `plan-analysis` (or, for FITS images, to `fits-to-zarr`).
