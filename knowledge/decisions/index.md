@@ -1,0 +1,4 @@
+# Decisions
+* [Deliver the Florence tutorial on the Schmidt JupyterHub, not Codespaces](delivery-on-jupyterhub.md) - The tutorial runs on a 2i2c Schmidt events JupyterHub with JupyterAI and Claude Code via the LLMoxie gateway; Codespaces + Copilot Chat is superseded for this event.
+* [Block 3 example: agent-driven FITS to Zarr, verified, then used for moment 0](block3-fits-to-zarr-example.md) - Block 3 converts a forward-modeled DSA FITS cube to Zarr with an agent and the fits-to-zarr skill, verifies it, then makes a moment-0 map and spectrum shown in astrowidget over DSS.
+* [fits-to-zarr skill: wrap a minimal converter, then verify the output](fits-to-zarr-skill.md) - The fits-to-zarr skill runs ovro-lwa-portal's fits_to_zarr_xradio converter via scripts/convert.py, then scripts/verify.py checks the Zarr against the original FITS.

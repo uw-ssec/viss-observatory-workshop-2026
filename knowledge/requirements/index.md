@@ -1,0 +1,5 @@
+# Requirements
+* [Teaching requirements for the observatory audience](audience-and-pedagogy.md) - Design for a broad astronomy audience in 2 hours: mostly hands-on, one or two clicks to start, verification-focused, and distinct from Schmidt's own sessions.
+* [Block 3 data must be small and stay off git](block3-data.md) - Block 3 uses a forward-modeled DSA cube (26 FITS, ~104 MB), never in git; on the hub it is read in place from the read-only S3 mount under ~/s3/schmidt-observatory-system/nov26-symposium/.
+* [Environment pins for astrowidget (zarr v2)](env-pins-zarr-v2.md) - Block 3 pins: ovro-lwa-portal from git @809aaf4, astrowidget 0.2.0, zarr>=2.18.7,<3 (xarray resolves to 2025.12), Python 3.12 via .python-version, requires-python <3.14; lock written with uv 0.6.14.
+* [Disclose LLM data collection to participants](llm-data-consent.md) - Gateway traffic is logged under UW IRB via enterprise cloud accounts; participants must be told at login, and EU/GDPR applicability for Florence is still being checked.

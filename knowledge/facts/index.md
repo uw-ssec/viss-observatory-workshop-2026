@@ -1,0 +1,11 @@
+# Facts
+* [Observatory workshop event: Florence, Nov 3-5 2026](observatory-event.md) - This repo is the Coding with AI Agents tutorial for the Schmidt Sciences Observatory System symposium near Florence, Nov 3-5 2026; the tutorial is Day 1.
+* [Observatory workshop timeline and deadlines (Oct-Nov 2026)](workshop-timeline.md) - Key dates: Block 3 content due Oct 15, test Oct 16, UW Tacoma dry run Oct 19 on the Schmidt hub, infra sync Oct 21, content freeze Oct 27, event Nov 3.
+* [Repository lineage and past deliveries](repo-lineage.md) - This repo forks schmidt-sciences TSOS, which forks the schmidt-sciences ISS workshop repo; PR and issue numbers in commit subjects refer to those other repos.
+* [How the workshop material evolved, and why](content-evolution.md) - Past content decisions: Copilot Chat as the only harness, rse-plugins submodule rejected, Block 3 rewritten as an in-repo skills loop, instructor notes removed.
+* [Stale text to fix for the observatory event](stale-event-references.md) - Several files still describe the ISS/Codespaces delivery and must be updated for the Florence JupyterHub event.
+* [External projects this workshop depends on](connected-projects.md) - Public projects connected to the workshop: LLMoxie gateway, oai-compatible-copilot, project-template, rse-plugins, ovro-lwa-portal and astrowidget.
+* [OVRO-LWA FITS-to-Zarr and astrowidget: the backstory](ovro-lwa-origin-story.md) - Why the OVRO-LWA project moved FITS image cubes to Zarr and why astrowidget exists; the narrative motivating Block 3.
+* [What ovro-lwa-portal source_review.ipynb actually does](source-review-notebook.md) - source_review.ipynb does no conversion: it opens a cluster Zarr store and runs a Panel/astrowidget source-review app; the converter is fits_to_zarr_xradio.py.
+* [astrowidget input format and API](astrowidget-usage.md) - astrowidget SkyWidget reads an xarray Zarr cube with SKY(time,frequency,polarization,l,m) and a newline-separated FITS WCS header string; SIN projection only.
+* [Who does what for the observatory workshop](workshop-roles.md) - Workshop roles: Cordero owns Block 3 FITS-to-Zarr content and skill; Anshul runs logistics and the hub image; Vani co-leads and tests; Don built the gateway and hub auth.
