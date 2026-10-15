@@ -10,7 +10,7 @@ The workshop is organized into four 30-minute-ish blocks.
 |---|---|---|---|
 | 1 | The AI Coding Agent Landscape | [`blocks/01-landscape/`](blocks/01-landscape/) | Slides + demo notebook |
 | 2 | How It Actually Works (post-training & tool calling) | [`blocks/02-how-it-works/`](blocks/02-how-it-works/) | Slides + model-swap notebook |
-| 3 | Agent-Driven Research Software Engineering | [`blocks/03-research-loop/`](blocks/03-research-loop/) | Slides + live Copilot Chat workflow demo |
+| 3 | Agent-Driven Research Software Engineering | [`blocks/03-research-loop/`](blocks/03-research-loop/) | Slides + FITS-to-Zarr agent notebook |
 | 4 | Build Your Own Skill (capstone) | [`blocks/04-build-a-skill/`](blocks/04-build-a-skill/) | Slides + hands-on custom-agent build |
 
 Each block folder follows a similar layout:
@@ -57,7 +57,7 @@ The [`.github/`](.github/) folder is a **worked gallery** of ways to customize a
 
 | Lifecycle phase           | What it is                                          | Primitive    | Location                                                                                                  |
 | ------------------------- | -------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------- |
-| Research loop (Block 3)   | Seven skills, each writing an artifact to `docs/`   | skills       | [`.github/skills/`](.github/skills/)                                                                      |
+| Data conversion (Block 3) | FITS images → verified Zarr cube (`fits-to-zarr`)   | skill        | [`.github/skills/`](.github/skills/)                                                                      |
 | Full analysis loop        | Orchestrate the seven research-loop skills          | agent        | [`research-data-scientist`](.github/agents/research-data-scientist.agent.md)                              |
 | Project setup             | Flat script → installable package (plan)            | command      | [`scaffold-package`](.github/prompts/scaffold-package.prompt.md)                                          |
 | Data / EDA                | First look at a dataset                             | command      | [`eda-summary`](.github/prompts/eda-summary.prompt.md)                                                    |
@@ -78,7 +78,7 @@ The [`.github/`](.github/) folder is a **worked gallery** of ways to customize a
 - **Commands:** type `/` in chat and pick a prompt (e.g.
   `/eda-summary`), or pass the input: `/write-tests target=sci_units.converters`.
 - **Skills:** ask in plain language ("profile the text-entry dataset in
-  `blocks/03-research-loop/demo/starter/`") and the matching research-loop skill
+  `blocks/03-research-loop/demo-hci/starter/`") and the matching research-loop skill
   (here `profile-dataset`) loads on demand.
 - **Instructions:** open a notebook or a file under `tests/` and they apply
   automatically.

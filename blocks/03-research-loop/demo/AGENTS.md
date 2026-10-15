@@ -1,100 +1,83 @@
-# Text-entry study: agent guidance
+# Forward-modeled DSA spectral cube: agent guidance
 
-A small within-subjects HCI experiment used as the running scenario in **Block 3**
-of the "Coding with AI Agents" workshop. Read this file first before analyzing the
-data.
+A small radio-astronomy imaging dataset used as the running scenario in **Block 3**
+of the "Coding with AI Agents" workshop. The task is to turn a folder of FITS
+images into one Zarr cube, **prove the conversion is faithful**, and view it on
+the sky. Read this file first.
 
 ## Paths and where to write artifacts
 
-This study lives in `blocks/03-research-loop/demo/`. The workshop repo is normally
-open at its **root**, so use full repo-root-relative paths:
+The workshop repo is normally open at its **root**, so use repo-root-relative paths:
 
-- **Data:** `blocks/03-research-loop/demo/starter/data.csv`
-- **Write every workflow artifact to `blocks/03-research-loop/demo/docs/`** (create
-  it if needed) — the profile, analysis plan, EDA, test results, draft, and
-  validation. **Do NOT write to the repo's top-level `docs/`.**
+- **Input FITS (read-only):** the first of these that exists. The data is
+  **not** in git.
+  1. the folder named by the `FITS_DATA_DIR` environment variable;
+  2. on the workshop JupyterHub, the folder under
+     `~/s3/schmidt-observatory-system/nov26-symposium/` that holds the
+     `mockfm_nl_cube_ch*.fits` files (a read-only mount of the shared S3
+     bucket; read it in place, do not copy it);
+  3. `.data/TSOS_Science_Symposium/` at the repo root.
+- **Zarr output:** `blocks/03-research-loop/demo/output/dsa-cube.zarr`
+  (git-ignored; regenerate it any time).
+- **Write every workflow artifact to `blocks/03-research-loop/demo/docs/`**
+  (create it if needed): the profile, the conversion record, and the
+  verification report. **Do NOT write to the repo's top-level `docs/`.**
+- **Slug:** `dsa-cube` (so `docs/profile-dsa-cube.md`, `docs/convert-dsa-cube.md`,
+  `docs/verify-dsa-cube.md`).
 
-These artifacts are meant to be **committed** (`git add blocks/03-research-loop/demo/docs/`)
-as the analysis audit trail for a dated record of what was analyzed and why.
+These artifacts are meant to be **committed**
+(`git add blocks/03-research-loop/demo/docs/`) as the audit trail of what was
+converted and how it was checked.
 
 ## What this data is
 
-`starter/data.csv` — a **synthetic** text-entry experiment. Each participant typed
-standardized phrases on three on-screen keyboard interfaces, and we recorded their
-typing speed and error rate. The data is **long/tidy**: one row per
-participant × interface.
+A **forward-modeled** spectral-line image cube for DSA (the Deep Synoptic
+Array), made for the Schmidt Sciences observatory symposium: a simulated sky
+passed through the instrument model. The band sits just below the 1420.4 MHz HI
+line. It is simulated: use it to learn the workflow, not to draw scientific
+conclusions.
 
-- `make_data.py` generates the CSV deterministically (fixed seed). It is demo
-  scaffolding and the thing you analyze is `data.csv`, not the generator.
-- The CSV's **first line is a `#` comment**; load with
-  `pandas.read_csv(path, comment="#")` (or `skiprows=1`).
+- 26 FITS files, **one frequency channel each**:
+  `mockfm_nl_cube_chNN_<freq>MHz.fits`, channels `00`-`25`.
+- Each image is **926 x 1076 pixels** (`NAXIS1` x `NAXIS2`) with two degenerate
+  axes (`FREQ`, `STOKES`) of length 1.
+- Sky projection `RA---SIN` / `DEC--SIN`, phase centre RA 170.0 deg,
+  Dec +39.7006 deg, pixel size 1 arcsec, frame `RADESYS = 'ICRS'`, **no `EQUINOX`**.
+- Frequencies 1415.2386-1418.4886 MHz in 130 kHz steps (`CRVAL3` = `RESTFREQ`).
+- One observation time for every file (`DATE-OBS` 2028-07-28T22:20:18.066,
+  `MJD-OBS` 61980.9308).
+- Units `BUNIT = 'JY/BEAM'`; each file has its own restoring beam (`BMAJ`,
+  `BMIN`, `BPA` in degrees).
+- The filenames carry the frequency with a decimal point and no timestamp, so
+  **group by header values, not filenames**.
 
-## Study design (read carefully — it determines the test)
+## Conventions
 
-- **Within-subjects (repeated measures):** Every participant uses **all three**
-  interfaces, so the three measurements from one participant are *paired*, not
-  independent. **Rows are not independent.** Do **not** analyze this with an
-  independent-samples test (one-way ANOVA, Welch/Student t-test).
-- **Factor:** `interface` with three levels — `qwerty` (baseline on-screen
-  keyboard), `swipe` (gesture typing), `predictive` (heavy auto-complete).
-- **Primary outcome:** `wpm` (words per minute). **Secondary:** `error_rate`
-  (fraction of characters corrected). The primary analysis is on `wpm`.
-- **Order:** `presentation_order` (1/2/3) is counterbalanced across participants,
-  so you can sanity check for a learning/order effect.
-
-### Variable dictionary
-
-| column | type | meaning |
-|---|---|---|
-| `participant_id` | str | participant label (`P01`…`P30`); the repeated-measures key |
-| `interface` | categorical | `qwerty` / `swipe` / `predictive` (within-subjects factor) |
-| `presentation_order` | int | 1–3, the order this participant saw this interface |
-| `wpm` | float | typing speed, words per minute (primary outcome) |
-| `error_rate` | float | fraction of characters corrected (secondary outcome) |
-
-### Hypotheses
-
-- **H0:** typing speed (`wpm`) does not differ across the three interfaces.
-- **H1:** at least one interface differs in `wpm`.
-
-## Analysis conventions
-
-- **alpha = 0.05.**
-- **Respect the repeated-measures design.** The candidate test is a
-  repeated-measures ANOVA; its non-parametric equivalent is the **Friedman test**.
-  Pairwise follow-ups are **paired** (Wilcoxon signed-rank or paired t), never
-  independent-samples.
-- **Check assumptions before trusting a parametric test:** normality (e.g.
-  Shapiro–Wilk per interface or on residuals) and sphericity. If normality fails,
-  **fall back to Friedman + Wilcoxon signed-rank post-hoc.**
-- **Always report an effect size**, not just a p-value (e.g. Kendall's W for
-  Friedman; matched-pairs rank-biserial for Wilcoxon). Add a **95% CI when you
-  compute one**; if you don't, note "CI not computed" rather than inventing an
-  interval.
-- **Correct for multiple comparisons** (Holm) across the pairwise post-hoc tests.
-- **Never invent citations.** Where a reference is needed in a draft, write
-  `[CITATION NEEDED]` — do not fabricate authors, years, or DOIs.
-- **Reproducibility:** set a NumPy seed; every reported number must reproduce from
-  `data.csv`.
-
-## Reporting style
-
-A draft write-up produces, in this order, in markdown:
-
-1. **Methods** — participants, design (within-subjects), apparatus (the three
-   interfaces), procedure, measures, and the analysis approach (which test, why,
-   assumption checks, effect size, correction).
-2. **Analysis / Results** — the findings, each traceable to a computed number,
-   leading with the answer to the research question.
+- **Use the `fits-to-zarr` skill and its scripts.** Do not hand-write a
+  converter. The skill wraps the production OVRO-LWA converter
+  (`ovro_lwa_portal.fits_to_zarr_xradio.convert_fits_dir_to_zarr`).
+- **The FITS files are read-only.** Never modify, move, or delete them.
+- **Conversion is not done until `verify.py` passes.** Report every failed check
+  with its evidence; never edit a script to make a check pass.
+- **Expected deviation:** the converter relabels the frame as FK5 (J2000). The
+  verification measures the resulting sky offset; anything well under 0.1 pixel
+  (0.1 arcsec here) is acceptable and should be stated, not hidden.
+- **Expected layout:** `SKY(time=1, frequency=26, polarization=1, l=926, m=1076)`;
+  `l` runs along the FITS x axis and `m` along y, so each Zarr plane is the FITS
+  image **transposed**.
 
 ## Out of scope for this demo
 
-- Causal claims beyond what the manipulated `interface` factor supports.
-- Modeling the learning/order effect beyond a sanity check.
-- Publishing, CI, a docs site.
+- Science analysis of the cube. The notebook's section 4 makes a moment-0 map
+  and a spectrum from the verified Zarr; the conversion task does not.
+- Re-gridding, re-projecting, or changing the data values.
+- Uploading the Zarr anywhere.
 
 ## How to verify a run
 
-Re-run the analysis script the agent wrote and confirm the headline numbers
-(Friedman χ², p, effect size, and the pairwise post-hoc) reproduce from
-`starter/data.csv`.
+Re-run the verifier and confirm every row says PASS:
+
+```bash
+python .github/skills/fits-to-zarr/scripts/verify.py <input FITS folder from above> \
+    blocks/03-research-loop/demo/output/dsa-cube.zarr
+```

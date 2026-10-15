@@ -16,8 +16,10 @@
 ## Block 3: Agent-Driven Research Software Engineering
 
 - [ ] Confirm the agent can see the skills: they ship in [`.github/skills/`](.github/skills/). If the agent doesn't pick them up, run **Developer: Reload Window**.
-- [ ] Confirm the stats stack is installed: in the terminal, `uv run python -c "import pandas, scipy, statsmodels; print('ok')"`. (They're declared in the root `pyproject.toml`.)
-- [ ] In the integrated terminal (at the repo root): `rm -rf blocks/03-research-loop/demo/docs/`. We want a clean slate so artifacts appear *during* the demo. (Explicit path so you never touch the repo's top-level `docs/`.) **Don't run any skill yet** — the demo starts with you running `profile-dataset` live in front of the room (slide 5).
+- [ ] Confirm the FITS/Zarr stack is installed: in the terminal, `python -c "import ovro_lwa_portal.fits_to_zarr_xradio, astrowidget; print('ok')"` (use `uv run python` in a uv checkout). They're declared in the root `pyproject.toml`.
+- [ ] Confirm the FITS data is reachable: the notebook's **Setup** cell should print `26 FITS files in ...`. On the hub it should point into `~/s3/schmidt-observatory-system/nov26-symposium/`; if no files are found, check that the cube has been uploaded there, or set `FITS_DATA_DIR` (see `blocks/03-research-loop/demo/starter/README.md`).
+- [ ] Open `blocks/03-research-loop/demo/notebook.ipynb` and check the double-horned spectrum plot appears and the astrowidget cell renders the moment-0 map on top of the DSS sky survey (it needs WebGL2 in the browser, and internet access to load the survey tiles from esm.sh and CDS).
+- [ ] In the integrated terminal (at the repo root): `rm -rf blocks/03-research-loop/demo/docs/ blocks/03-research-loop/demo/output/`. We want a clean slate so artifacts appear *during* the demo. (Explicit path so you never touch the repo's top-level `docs/`.) **Don't run any skill yet** — the demo starts with you running `profile-dataset` live in front of the room (Demo 1/4).
 - [ ] Have **all the prompts copied to a scratch buffer** (text file, sticky note, Slack DM to yourself, wherever you can paste fast). The exact prompts are on the demo slides in [`blocks/03-research-loop/slides.md`](../blocks/03-research-loop/slides.md).
 - [ ] Open `blocks/03-research-loop/demo/expected-artifacts/` in a side tab as the **fallback** in case the live demo fails.
 

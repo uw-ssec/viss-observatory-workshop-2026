@@ -30,7 +30,7 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 ├── blocks/                      # The four workshop blocks (layout is load-bearing; don't restructure)
 │   ├── 01-landscape/            # Slides + agent-loop notebook; demo/starter/ is the sci_units package
 │   ├── 02-how-it-works/         # Slides + model-swap notebook
-│   ├── 03-research-loop/        # Slides + Copilot Chat research-loop demo (starter data, expected artifacts)
+│   ├── 03-research-loop/        # Slides + FITS-to-Zarr agent notebook (demo/) and the older HCI stats demo (demo-hci/)
 │   ├── 04-build-a-skill/        # Slides + capstone exercise templates
 │   └── _shared/slides.css       # Marp theme (registered in .vscode/settings.json)
 ├── docs/                        # Workshop outline, pre-block checklists, audience Q&A, stats reference
