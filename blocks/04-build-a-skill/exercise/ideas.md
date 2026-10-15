@@ -34,7 +34,7 @@ description. Pick one and remix it into a custom agent (`.github/agents/`).
 
 ## Domain-specific (HCI / experiment analysis)
 
-Targets the Block 3 text-entry dataset (`blocks/03-research-loop/demo/starter/data.csv`) or your own experiment data.
+Targets the Block 3 text-entry dataset (`blocks/03-research-loop/demo-hci/starter/data.csv`) or your own experiment data.
 
 | Skill | Tools | What it does | Good target |
 |---|---|---|---|

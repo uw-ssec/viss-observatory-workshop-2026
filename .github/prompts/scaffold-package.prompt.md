@@ -11,7 +11,7 @@ concrete plan to turn it into a small, installable, `uv`-managed package with
 a `src/` layout. This is the **project setup** phase of the research
 lifecycle.
 
-Target: `${input:target:script or folder to package, e.g. blocks/03-research-loop/demo/starter/ (blank = open file)}`.
+Target: `${input:target:script or folder to package, e.g. blocks/03-research-loop/demo-hci/starter/ (blank = open file)}`.
 If blank, don't assume: use `#tool:vscode/askQuestions` to confirm with the user
 whether to package the open file `${file}` or a specific script/folder first.
 

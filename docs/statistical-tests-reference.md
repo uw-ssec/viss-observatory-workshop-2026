@@ -3,7 +3,7 @@
 A quick instructor reference for every statistical test, assumption check, effect
 size, and correction that appears in `blocks/03-research-loop/`. Use it to answer
 "what is that test?" during Q&A. Grounded in the demo artifacts under
-`blocks/03-research-loop/demo/` and the skills in `.github/skills/`.
+`blocks/03-research-loop/demo-hci/` and the skills in `.github/skills/`.
 
 ## The study context (why these tests, not others)
 
@@ -150,11 +150,11 @@ independent-samples ANOVA/t-test that would ignore the pairing.
 
 ## Sources
 
-- `blocks/03-research-loop/demo/AGENTS.md` — study design and stats conventions
-- `blocks/03-research-loop/demo/expected-artifacts/analysis-plan-text-entry.md`
-- `blocks/03-research-loop/demo/expected-artifacts/explore-text-entry.md`
-- `blocks/03-research-loop/demo/expected-artifacts/test-text-entry.md`
-- `blocks/03-research-loop/demo/expected-artifacts/validate-text-entry.md`
-- `blocks/03-research-loop/demo/expected-artifacts/analysis.py`
+- `blocks/03-research-loop/demo-hci/AGENTS.md` — study design and stats conventions
+- `blocks/03-research-loop/demo-hci/expected-artifacts/analysis-plan-text-entry.md`
+- `blocks/03-research-loop/demo-hci/expected-artifacts/explore-text-entry.md`
+- `blocks/03-research-loop/demo-hci/expected-artifacts/test-text-entry.md`
+- `blocks/03-research-loop/demo-hci/expected-artifacts/validate-text-entry.md`
+- `blocks/03-research-loop/demo-hci/expected-artifacts/analysis.py`
 - `.github/skills/` — `plan-analysis`, `explore-data`, `statistical-tests`,
   `validate-analysis`

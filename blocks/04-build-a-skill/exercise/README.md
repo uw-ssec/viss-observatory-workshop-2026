@@ -75,7 +75,7 @@ Run the agent and watch what it actually does, noting anything it got wrong.
 Example queries depending on what you built:
 - For a reviewer: *"Review `blocks/01-landscape/demo/starter/src/sci_units/converters.py`."*
 - For a docstring writer: *"Add docstrings to `blocks/01-landscape/demo/starter/src/sci_units/converters.py`."*
-- For an assumption checker: *"Check the normality assumption on `blocks/03-research-loop/demo/starter/data.csv`."*
+- For an assumption checker: *"Check the normality assumption on `blocks/03-research-loop/demo-hci/starter/data.csv`."*
 - For an error explainer: *"Explain this traceback: <paste>."*
 
 ## 6. Iterate (back to step 4)

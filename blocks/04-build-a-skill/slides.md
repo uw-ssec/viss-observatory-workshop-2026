@@ -60,7 +60,7 @@ Three primitives, same idea (a markdown file = instructions + tools), different 
     cp blocks/04-build-a-skill/exercise/my-agent.agent.md.template \
        .github/agents/my-agent.agent.md
     ```
-2. **Pick** a target, the `sci_units` package, the Block 3 text-entry dataset, or your own code.
+2. **Pick** a target, the `sci_units` package, the Block 3 FITS cube, the text-entry dataset in `blocks/03-research-loop/demo-hci/`, or your own code.
 3. **Pick** a job, see `exercise/ideas.md`, or invent your own.
 4. **Edit** the file: name, description, tools, system prompt, constraints.
 5. **Reload** Copilot Chat (or wait, agents auto-detect).
