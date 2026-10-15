@@ -38,7 +38,7 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 ├── .devcontainer/               # Participant Codespace: uv env, Jupyter kernel, LLMoxie/LiteLLM gateway, OAI Copilot VSIX
 ├── .github/
 │   ├── copilot-instructions.md  # Workshop content conventions (also read by Copilot)
-│   ├── agents/ prompts/ skills/ instructions/  # WORKSHOP CONTENT: Copilot customization gallery (Blocks 3-4)
+│   ├── agents/ prompts/ skills/ instructions/  # WORKSHOP CONTENT: Copilot versions of the gallery; skills/ is the canonical copy (Blocks 3-4)
 │   ├── ISSUE_TEMPLATE/          # Issue templates (bug, feature, docs, onboard, etc.)
 │   ├── pull_request_template.md # PR template (requires pre-commit checks)
 │   ├── dependabot.yml           # Dependabot config for GitHub Actions
@@ -46,8 +46,9 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 │   └── workflows/               # zizmor workflow linting, Copilot cloud agent setup
 ├── .agents/
 │   ├── rules/                   # MAINTAINER TOOLING: on-demand rules referenced by AGENTS.md
-│   └── skills/                  # Maintainer skills (/commit, /create-pr, /okf-memory, ...)
+│   └── skills/                  # Maintainer skills (/commit, /create-pr, /okf-memory, ...) + links to the .github/skills/ gallery skills
 ├── .claude/
+│   ├── agents/ commands/ rules/ # WORKSHOP CONTENT: Claude Code gallery (Block 4), ported from .github/
 │   └── skills -> ../.agents/skills  # Symlink so Claude Code discovers the skills
 ├── knowledge/                   # OKF project memory, managed by the okf CLI (okf-memory skill)
 ├── .vscode/                     # Recommended extensions, Marp theme registration

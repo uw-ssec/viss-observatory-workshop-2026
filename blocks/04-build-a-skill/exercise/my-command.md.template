@@ -1,0 +1,38 @@
+---
+description: 'TODO: one-line description of this one-shot command (shown in the / menu)'
+argument-hint: '[TODO: what the user passes, e.g. path to a .csv]'
+allowed-tools: Read, Grep, Glob
+# allowed-tools lists tools the command may use WITHOUT asking permission.
+# Add Edit, Write if the command should modify code.
+# Add a scoped Bash entry, e.g. Bash(uv run pytest:*), if it should run a command.
+---
+
+# TODO: command title
+
+<one or two sentences describing what this command does and the phase of the
+research lifecycle it belongs to.> This is a custom slash command I'm
+building during Block 4. It mirrors the structure of the worked examples in
+`.claude/commands/`.
+
+The target is: `$ARGUMENTS`.
+If that is blank, don't guess: ask the user what to act on before doing
+anything.
+
+## Steps
+
+1. <step 1, usually "read X">
+2. <step 2, usually "do Y">
+3. <step 3, usually "produce Z">
+
+## Constraints
+
+- <constraint 1, common: "do not modify the file; this is read-only">
+- <constraint 2, common: "do not fabricate numbers / citations">
+- <constraint 3, common: "keep it to one screen">
+
+## Output format
+
+```
+TODO: show a concrete example of what good output looks like.
+Concrete examples beat abstract descriptions.
+```

@@ -20,10 +20,13 @@ them when editing workshop material.
 
 Note the two agent-customization trees:
 
-- `.github/agents|prompts|skills|instructions/` is **workshop content** — a
-  gallery participants study in Block 4. Edit it as teaching material.
+- `.claude/agents|commands|rules/` and the gallery skills in `.github/skills/`
+  are **workshop content** — the Claude Code gallery participants study in
+  Block 4. `.github/agents|prompts|instructions/` hold the Copilot versions of
+  the same files; keep the pairs in sync. Edit both as teaching material.
 - `.agents/` (rules and skills, symlinked from `.claude/skills`) is **maintainer
-  tooling** for working on this repo. It is not part of the workshop.
+  tooling** for working on this repo, except the gallery skills it links in from
+  `.github/skills/` so Claude Code can load them.
 
 ## Non-negotiables
 

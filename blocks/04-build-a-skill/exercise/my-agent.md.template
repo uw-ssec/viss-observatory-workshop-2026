@@ -1,9 +1,9 @@
 ---
 name: TODO-your-agent-name
-description: 'TODO: one-line description shown in the Copilot agent picker'
-tools: ['read', 'search/codebase']
-# Add 'edit/editFiles' if your agent needs to modify code.
-# Add 'execute/runInTerminal' if your agent needs to run shell commands (pytest, etc.).
+description: 'TODO: one line saying what this agent does and when to use it. Claude reads this to decide when to delegate to it.'
+tools: Read, Grep, Glob
+# Add Edit (and Write, to create new files) if your agent needs to modify code.
+# Add Bash if your agent needs to run shell commands (pytest, etc.).
 # Start narrow: you can always grant more.
 ---
 
@@ -11,8 +11,8 @@ tools: ['read', 'search/codebase']
 
 You are <persona>. Your job is to <one sentence describing what this agent does>.
 
-This is a custom agent I'm building during Block 4 of the workshop. It mirrors
-the structure of the worked examples in `.github/agents/`.
+This is a subagent I'm building during Block 4 of the workshop. It mirrors
+the structure of the worked examples in `.claude/agents/`.
 
 ## What you do
 
@@ -27,9 +27,10 @@ function name, an error message, etc.>. You:
 
 - <constraint 1, common: "do not edit files outside <some scope>">
 - <constraint 2, common: "do not invent <something>">
-- <constraint 3, common: "ask before <some risky action>">
+- <constraint 3, common: "if something is unclear, say so in your report instead of guessing">
 
 ## Output format
 
 <describe what the result looks like, markdown? code edit? plain prose?
-ask for clarification if something specific?>
+Your final message is what gets handed back to the main conversation, so
+make it a complete, self-contained report.>

@@ -1,17 +1,18 @@
 ---
-applyTo: "TODO/glob/**/*.py"
-# The glob decides WHEN these instructions auto-inject. Examples:
+paths:
+    - "TODO/glob/**/*.py"
+# The glob decides WHEN these rules load. Examples:
 #   "**/tests/**/*.py"  -> any file under a tests/ directory
 #   "**/*.ipynb"        -> any Jupyter notebook
-#   "**"                -> every file (use sparingly)
+# Leave out `paths` entirely and the rule loads in every session (use sparingly).
 ---
 
 # TODO: name these conventions (e.g. "Test conventions")
 
-These instructions apply automatically whenever a file matching the `applyTo`
-glob above is in context. Unlike an agent or a prompt, you never invoke this —
-Copilot injects it for you. This mirrors the worked examples in
-`.github/instructions/`.
+These rules apply automatically whenever Claude reads or edits a file matching
+the `paths` glob above. Unlike an agent or a command, you never invoke this —
+Claude Code loads it for you. This mirrors the worked examples in
+`.claude/rules/`.
 
 When working on these files in this project:
 

@@ -65,13 +65,13 @@ the framing from the slides so you can answer without flipping back.
 
 | Question | Short answer |
 |---|---|
-| What's the difference between a custom agent and a prompt file? | Custom agent = persistent persona for the whole conversation, picked from the agent dropdown. Prompt file = one-shot `/slash` command. Use prompt files for repeated quick actions, agents for sustained tasks. |
-| What's a skill, then? | A skill is a folder (`.github/skills/<name>/SKILL.md`) that can bundle scripts and resources, loaded on demand. Use it for a multi-step capability, not a single prompt. See the Block 3 research-loop skills. |
-| Which primitive should I reach for? | Pick the smallest one that does the job, usually a prompt file or a skill, not a whole agent. They compose: an agent (`research-data-scientist`) can drive the seven skills in order. |
-| Can I have multiple agents active at once? | One at a time per chat. But you can switch mid-conversation, and agents can hand off to each other. |
-| Does the agent use the LiteLLM proxy? | Yes. Copilot uses the same env vars regardless of agent. The model you see in the picker comes from your Copilot settings. |
-| Can I use this with another tool (Cursor, Claude Code)? | Yes. They have their own equivalents (Cursor rules and modes, Claude Code skills). The pattern transfers; the file format differs slightly. We keep the whole workshop in Copilot Chat for consistency. |
-| Where do I save the agent to use it on my own repo? | Same place: `.github/agents/<name>.agent.md` in that repo. The file is portable; commit it and your collaborators get it too. |
-| How do I test an agent without running a real query? | You can't, really. The iteration loop is: edit prompt → reload → run → observe → edit. Same as prompt engineering anywhere. |
-| My agent doesn't appear in the picker. What's wrong? | Check the filename is `*.agent.md` in `.github/agents/`, then run **Developer: Reload Window**. If it loads but errors, it's usually a YAML frontmatter problem: missing quotes around the description or a malformed `tools` list. |
+| What's the difference between a subagent and a slash command? | Subagent = focused persona with its own tool list and context; Claude hands it a task and gets a report back. Slash command = one-shot `/name` prompt you fire yourself. Use commands for repeated quick actions, agents for focused delegated tasks. |
+| What's a skill, then? | A skill is a folder (`.claude/skills/<name>/SKILL.md`) that can bundle scripts and resources, loaded on demand. Use it for a multi-step capability, not a single prompt. See the Block 3 research-loop skills. |
+| Which primitive should I reach for? | Pick the smallest one that does the job, usually a command or a skill, not a whole agent. They compose: an agent (`research-data-scientist`) can drive the seven skills in order. |
+| Can I have multiple agents active at once? | Yes. The main session can delegate to several subagents, even in parallel, and each reports back. To make one agent the whole session, start with `claude --agent <name>`. |
+| Does the agent use the LiteLLM proxy? | Yes. Subagents run inside the same Claude Code session, so they use the same backend. A subagent can pin a different model with the `model` field. |
+| Can I use this with another tool (Copilot, Cursor)? | Yes. They have their own equivalents (Copilot custom agents and prompt files, Cursor rules and modes). The pattern transfers; the file format differs slightly. `.github/` in this repo has the Copilot version of every gallery file to compare. |
+| Where do I save the agent to use it on my own repo? | Same place: `.claude/agents/<name>.md` in that repo. The file is portable; commit it and your collaborators get it too. For an agent you want in every project, use `~/.claude/agents/`. |
+| How do I test an agent without running a real query? | You can't, really. The iteration loop is: edit prompt → run → observe → edit. Same as prompt engineering anywhere. |
+| My agent doesn't show up after `@`. What's wrong? | Check the file is `*.md` in `.claude/agents/` and that `claude` was started from the repo root; if so, `/exit` and restart `claude`. If it loads but errors, it's usually a YAML frontmatter problem: missing quotes around the description or a missing `name`. |
 | My agent runs but does the wrong thing. | Almost always the system-prompt steps are too vague. Tighten step 1, add a 'What you do NOT do' constraint, and if it loops, add 'After at most 5 tool calls, summarize and stop.' |

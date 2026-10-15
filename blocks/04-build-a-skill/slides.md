@@ -30,26 +30,25 @@ description: "Coding with AI Agents"
 ---
 
 
-## Prompts vs. skills vs. agents (all in `.github/`)
+## Commands vs. skills vs. agents (all in `.claude/`)
 
 Three primitives, same idea (a markdown file = instructions + tools), different shapes:
 
-| | **Prompt file** | **Skill** | **Custom agent** |
+| | **Slash command** | **Skill** | **Subagent** |
 |---|---|---|---|
-| **Folder** | `.github/prompts/*.prompt.md` | `.github/skills/<name>/SKILL.md` | `.github/agents/*.agent.md` |
-| **Invoked** | You type `/name` | Agent auto-picks (or `/name`) | You select it in the agent picker |
-| **Input** | Structured `${input:var}` fields | Natural-language context (+ `argument-hint`) | The whole conversation |
-| **Best for** | One-shot repeatable task | A multi-step capability (can bundle scripts) | A persistent persona with a fixed tool list |
-| **Lifespan** | One turn | One task | The whole chat |
+| **Folder** | `.claude/commands/*.md` | `.claude/skills/<name>/SKILL.md` | `.claude/agents/*.md` |
+| **Invoked** | You type `/name` | Claude auto-picks (or `/name`) | `@agent-name`, "use the X subagent", or Claude delegates |
+| **Input** | `$ARGUMENTS` after the command | Natural-language context (+ `argument-hint`) | The task Claude hands it |
+| **Best for** | One-shot repeatable task | A multi-step capability (can bundle scripts) | A focused persona with a fixed tool list and its own context |
+| **Lifespan** | One turn | One task | One delegated task (or the whole session with `claude --agent`) |
 | **Example here** | `eda-summary`, `scaffold-package` | the 6 research-loop skills | `docstring-writer`, `research-data-scientist` |
 
 > They **compose**: `research-data-scientist` (an *agent*) drives the seven *skills* in
 > order. Pick the smallest primitive that does the job — most of the time that's a
-> prompt file or a skill, not a whole agent.
+> command or a skill, not a whole agent.
 
-> Prompts don't only take static `${input}` fields — they can gather context
-> *interactively* by calling the `vscode/askQuestions` tool ("which file should I
-> test?") instead of guessing.
+> The fourth primitive, **rules** (`.claude/rules/*.md`), is never invoked: Claude
+> loads them when it touches a file matching their `paths` glob.
 
 ---
 
@@ -57,14 +56,14 @@ Three primitives, same idea (a markdown file = instructions + tools), different 
 
 1. **Copy** the template:
     ```bash
-    cp blocks/04-build-a-skill/exercise/my-agent.agent.md.template \
-       .github/agents/my-agent.agent.md
+    cp blocks/04-build-a-skill/exercise/my-agent.md.template \
+       .claude/agents/my-agent.md
     ```
 2. **Pick** a target, the `sci_units` package, the Block 3 FITS cube, the text-entry dataset in `blocks/03-research-loop/demo-hci/`, or your own code.
 3. **Pick** a job, see `exercise/ideas.md`, or invent your own.
 4. **Edit** the file: name, description, tools, system prompt, constraints.
-5. **Reload** Copilot Chat (or wait, agents auto-detect).
-6. **Run** your agent and **iterate**.
+5. **Run** `claude` in a JupyterHub terminal at the repo root (new agents are picked up live).
+6. **Call** it with `@agent-my-agent ...` and **iterate**.
 
 Full instructions: [`blocks/04-build-a-skill/exercise/README.md`](../../blocks/04-build-a-skill/exercise/README.md)
 
@@ -80,7 +79,7 @@ You now have:
 
 - A mental model that survives the next product release from a frontier AI lab
 - A concrete agentic workflow you've seen run on real data
-- A custom agent you wrote yourself that **lives in your Codespace**
+- A subagent you wrote yourself that **lives in your repo**, ready for any Claude Code session
 
 
 > Thank you for spending the afternoon with us.

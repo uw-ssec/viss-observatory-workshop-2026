@@ -5,19 +5,18 @@ else is "going further."
 
 ## The primitives we used
 
-- **VS Code: [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents)**: the official docs for the file format we just used (`.agent.md`). These were previously called "custom chat modes" (`.chatmode.md`) — same idea, current name. Bookmark this.
-- **VS Code: [Prompt files](https://code.visualstudio.com/docs/copilot/customization/prompt-files)**: the simpler primitive (slash commands). Use these for repeated one-shot actions where a full custom agent is overkill. See `.github/prompts/` for worked examples.
-- **VS Code: [Agent skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)**: a folder (`.github/skills/<name>/SKILL.md`) that bundles instructions, and optionally scripts and resources, for a multi-step capability, loaded on demand. See the Block 3 research-loop skills in `.github/skills/`.
-- **GitHub: [Custom instructions](https://docs.github.com/en/copilot/customizing-copilot/about-customizing-github-copilot-chat-responses)**: `.github/copilot-instructions.md` is the project-wide equivalent of `AGENTS.md`; `.github/instructions/*.instructions.md` are path-scoped (an `applyTo` glob). Use them for conventions every chat should know about.
+- **Claude Code: [Subagents](https://code.claude.com/docs/en/sub-agents)**: the official docs for the file format we just used (`.claude/agents/*.md`): frontmatter fields, tool names, and how to invoke one. Bookmark this.
+- **Claude Code: [Skills](https://code.claude.com/docs/en/skills)**: a folder (`.claude/skills/<name>/SKILL.md`) that bundles instructions, and optionally scripts and resources, for a multi-step capability, loaded on demand. The same page covers slash commands (`.claude/commands/*.md`), the simpler one-shot primitive, and `$ARGUMENTS`. See the Block 3 research-loop skills in `.claude/skills/` and the worked commands in `.claude/commands/`.
+- **Claude Code: [Memory](https://code.claude.com/docs/en/memory)**: `CLAUDE.md` / `AGENTS.md` for project-wide conventions, and `.claude/rules/*.md` with a `paths` glob for path-scoped rules. See `.claude/rules/` for worked examples.
 
-## Going further with Copilot
+## Going further with Claude Code
 
-- **GitHub: [MCP for Copilot](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/extend-copilot-chat-with-mcp)**: the next step up if you want to give Copilot brand-new tools (read from your database, query an internal API, etc.). Higher ceiling, more setup.
-- **Anthropic: [Model Context Protocol](https://modelcontextprotocol.io/)**: the underlying open standard. Worth understanding if you want your tools to work in Copilot AND Claude Code AND Cursor.
+- **Claude Code: [MCP](https://code.claude.com/docs/en/mcp)**: the next step up if you want to give Claude brand-new tools (read from your database, query an internal API, etc.). Higher ceiling, more setup.
+- **Anthropic: [Model Context Protocol](https://modelcontextprotocol.io/)**: the underlying open standard. Worth understanding if you want your tools to work in Claude Code AND Copilot AND Cursor.
 
 ## The same idea in other tools
 
-- **Anthropic: [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills)**: custom agents' closest cousin in Claude Code — the same "skill is a markdown file" idea we used for the Block 3 research loop.
+- **GitHub Copilot: [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents), [prompt files](https://code.visualstudio.com/docs/copilot/customization/prompt-files), [agent skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills), and [custom instructions](https://docs.github.com/en/copilot/customizing-copilot/about-customizing-github-copilot-chat-responses)**: the same four primitives in VS Code. This repo keeps Copilot versions of every gallery file in `.github/agents/`, `.github/prompts/`, `.github/skills/`, and `.github/instructions/`; diff them against `.claude/` to see how little changes between tools.
 - **Cursor: [Custom rules and modes](https://docs.cursor.com/)**: for participants who use Cursor day-to-day.
 - **Aider: [Conventions and prompts](https://aider.chat/docs/usage/conventions.html)**: the OSS alternative; same patterns, smaller surface area.
 
@@ -29,7 +28,7 @@ else is "going further."
 
 ## Office hours and follow-up
 
-- This workshop's repository is yours to keep. Fork it; bring your custom agents home.
+- This workshop's repository is yours to keep. Fork it; bring your subagents home.
 - Office hours next day: come with the code or data you actually want to use this on.
 - Mailing list for ongoing community: ask the workshop organizers, exact link to be confirmed.
 

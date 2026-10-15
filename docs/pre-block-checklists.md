@@ -15,7 +15,7 @@
 
 ## Block 3: Agent-Driven Research Software Engineering
 
-- [ ] Confirm the agent can see the skills: they ship in [`.github/skills/`](.github/skills/). If the agent doesn't pick them up, run **Developer: Reload Window**.
+- [ ] Confirm the agent can see the skills: they ship in [`.github/skills/`](.github/skills/) and Claude Code loads them through `.claude/skills/`. In `claude` at the repo root, type `/` and look for `profile-dataset` and `fits-to-zarr`. If they are missing, run `/reload-skills`.
 - [ ] Confirm the FITS/Zarr stack is installed: in the terminal, `python -c "import ovro_lwa_portal.fits_to_zarr_xradio, astrowidget; print('ok')"` (use `uv run python` in a uv checkout). They're declared in the root `pyproject.toml`.
 - [ ] Confirm the FITS data is reachable: the notebook's **Setup** cell should print `26 FITS files in ...`. On the hub it should point into `~/s3/schmidt-observatory-system/nov26-symposium/`; if no files are found, check that the cube has been uploaded there, or set `FITS_DATA_DIR` (see `blocks/03-research-loop/demo/starter/README.md`).
 - [ ] Open `blocks/03-research-loop/demo/notebook.ipynb` and check the double-horned spectrum plot appears and the astrowidget cell renders the moment-0 map on top of the DSS sky survey (it needs WebGL2 in the browser, and internet access to load the survey tiles from esm.sh and CDS).
@@ -25,4 +25,4 @@
 
 ## Block 4: Build Your Own Skill (capstone)
 
-- [ ] Confirm both worked-example agents appear in the Copilot agent picker. (Open the chat panel, click the agent dropdown, look for `scientific-python-reviewer` and `docstring-writer`.) If not: **Developer: Reload Window**.
+- [ ] Confirm both worked-example agents are available: in `claude` at the repo root, type `@agent-` and look for `scientific-python-reviewer` and `docstring-writer`. If not, `/exit` and start `claude` again from the repo root.

@@ -10,11 +10,12 @@ You are <persona>. Your job is to <one sentence describing what this skill does>
 
 This is a custom skill I'm building during Block 4. A skill is the next
 primitive up from an agent: same shape (persona + steps + constraints + output),
-but it lives at `.github/skills/<your-skill-name>/SKILL.md` and the agent
-auto-selects it on demand. It mirrors the worked examples in `.github/skills/`.
+but it lives at `.claude/skills/<your-skill-name>/SKILL.md`, Claude
+auto-selects it on demand, and you can run it yourself as `/<your-skill-name>`.
+It mirrors the worked examples in `.claude/skills/`.
 
 > Setup: rename this file to `SKILL.md` and put it in its own folder —
-> `.github/skills/<your-skill-name>/SKILL.md`. The folder can also hold scripts
+> `.claude/skills/<your-skill-name>/SKILL.md`. The folder can also hold scripts
 > and resources the skill needs.
 
 ## What you do

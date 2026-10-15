@@ -33,55 +33,57 @@ blocks/0N-name/
 
 You don't need anything installed locally: everything runs in a GitHub Codespace.
 
-## Copilot customization gallery
+## Agent customization gallery
 
-The [`.github/`](.github/) folder is a **worked gallery** of ways to customize an AI coding agent for research software engineering with GitHub Copilot. It pairs with Block 4 ("Build Your Own Skill"): read these as references, and then write your own. Everything there is plain markdown but contains **structured prompts, tool lists, and project context**. The same ideas port to Claude Code skills, Cursor rules, and coding agent harnesses.
+The [`.claude/`](.claude/) folder is a **worked gallery** of ways to customize an AI coding agent for research software engineering with Claude Code. It pairs with Block 4 ("Build Your Own Skill"): read these as references, and then write your own. Everything there is plain markdown but contains **structured prompts, tool lists, and project context**. The same ideas port to Copilot, Cursor rules, and other coding agent harnesses: the [`.github/`](.github/) folder keeps the GitHub Copilot version of every gallery file, so you can compare the two formats side by side.
 
 ### The five primitives
 
-| Primitive                    | Folder                                   | Invoked                     | Best for                                     |
-| ---------------------------- | ---------------------------------------- | --------------------------- | -------------------------------------------- |
-| **Project memory**           | `.github/copilot-instructions.md`        | Always on                   | Conventions every chat should know           |
-| **Path-scoped instructions** | `.github/instructions/*.instructions.md` | Auto, by `applyTo` glob     | Rules for a file type (notebooks, tests)     |
-| **Custom agents**            | `.github/agents/*.agent.md`              | Agent picker                | A persistent persona with a narrow tool list |
-| **Commands (prompt files)**  | `.github/prompts/*.prompt.md`            | `/name` slash command       | A repeatable one-shot task                   |
-| **Skills**                   | `.github/skills/<name>/SKILL.md`         | On demand (auto or `/name`) | A multi-step capability that bundles scripts |
+| Primitive                | Folder                           | Invoked                                  | Best for                                     |
+| ------------------------ | -------------------------------- | ---------------------------------------- | -------------------------------------------- |
+| **Project memory**       | `CLAUDE.md` / `AGENTS.md`        | Always on                                | Conventions every session should know        |
+| **Path-scoped rules**    | `.claude/rules/*.md`             | Auto, by `paths` glob                    | Rules for a file type (notebooks, tests)     |
+| **Subagents**            | `.claude/agents/*.md`            | `@agent-<name>`, or Claude delegates     | A focused persona with a narrow tool list    |
+| **Slash commands**       | `.claude/commands/*.md`          | `/name` slash command                    | A repeatable one-shot task                   |
+| **Skills**               | `.claude/skills/<name>/SKILL.md` | On demand (auto or `/name`)              | A multi-step capability that bundles scripts |
 
-> **Note on naming:** custom agents were previously called **custom chat
-> modes** (`.chatmode.md` in `.github/chatmodes/`). VS Code renamed them to
-> custom agents (`.agent.md` in `.github/agents/`); the functionality is the
-> same. This repo uses the current `.agent.md` form.
+> **Note on layout:** `.claude/skills` is a link to `.agents/skills/`, where the
+> workshop skills sit (as links into `.github/skills/`) next to the maintainer
+> skills. Any agent harness that reads `.agents/` or `.claude/` sees the same set.
 
 ### Mapped to the research-software lifecycle
 
 
-| Lifecycle phase           | What it is                                          | Primitive    | Location                                                                                                  |
-| ------------------------- | -------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------- |
-| Data conversion (Block 3) | FITS images → verified Zarr cube (`fits-to-zarr`)   | skill        | [`.github/skills/`](.github/skills/)                                                                      |
-| Full analysis loop        | Orchestrate the seven research-loop skills          | agent        | [`research-data-scientist`](.github/agents/research-data-scientist.agent.md)                              |
-| Project setup             | Flat script → installable package (plan)            | command      | [`scaffold-package`](.github/prompts/scaffold-package.prompt.md)                                          |
-| Data / EDA                | First look at a dataset                             | command      | [`eda-summary`](.github/prompts/eda-summary.prompt.md)                                                    |
-| Implementation / planning | Read-only thinking partner, then hand off           | agent        | [`research-pair`](.github/agents/research-pair.agent.md)                                                  |
-| Testing / validation      | Focused pytest tests for a target                  | command      | [`write-tests`](.github/prompts/write-tests.prompt.md)                                                    |
-| Reproducibility           | Audit for paths, seeds, pinned env                  | agent        | [`reproducibility-auditor`](.github/agents/reproducibility-auditor.agent.md)                              |
-| Documentation             | Add NumPy-style docstrings                          | agent        | [`docstring-writer`](.github/agents/docstring-writer.agent.md)                                            |
-| Code review               | Review vs Scientific Python guidelines              | agent        | [`scientific-python-reviewer`](.github/agents/scientific-python-reviewer.agent.md)                        |
-| Packaging / publication   | Draft `CITATION.cff` + release notes                | command      | [`citation-and-release`](.github/prompts/citation-and-release.prompt.md)                                  |
-| Conventions (notebooks)   | Notebook-as-teaching-document rules                 | instructions | [`notebooks.instructions.md`](.github/instructions/notebooks.instructions.md)                             |
-| Conventions (tests)       | pytest + `uv` conventions                           | instructions | [`tests.instructions.md`](.github/instructions/tests.instructions.md)                                     |
+| Lifecycle phase           | What it is                                          | Primitive | Location                                                                           |
+| ------------------------- | --------------------------------------------------- | --------- | ---------------------------------------------------------------------------------- |
+| Data conversion (Block 3) | FITS images → verified Zarr cube (`fits-to-zarr`)   | skill     | [`.claude/skills/`](.claude/skills/)                                               |
+| Full analysis loop        | Orchestrate the seven research-loop skills          | agent     | [`research-data-scientist`](.claude/agents/research-data-scientist.md)             |
+| Project setup             | Flat script → installable package (plan)            | command   | [`scaffold-package`](.claude/commands/scaffold-package.md)                         |
+| Data / EDA                | First look at a dataset                             | command   | [`eda-summary`](.claude/commands/eda-summary.md)                                   |
+| Implementation / planning | Read-only thinking partner, then hand off           | agent     | [`research-pair`](.claude/agents/research-pair.md)                                 |
+| Testing / validation      | Focused pytest tests for a target                   | command   | [`write-tests`](.claude/commands/write-tests.md)                                   |
+| Reproducibility           | Audit for paths, seeds, pinned env                  | agent     | [`reproducibility-auditor`](.claude/agents/reproducibility-auditor.md)             |
+| Documentation             | Add NumPy-style docstrings                          | agent     | [`docstring-writer`](.claude/agents/docstring-writer.md)                           |
+| Code review               | Review vs Scientific Python guidelines              | agent     | [`scientific-python-reviewer`](.claude/agents/scientific-python-reviewer.md)       |
+| Packaging / publication   | Draft `CITATION.cff` + release notes                | command   | [`citation-and-release`](.claude/commands/citation-and-release.md)                 |
+| Conventions (notebooks)   | Notebook-as-teaching-document rules                 | rule      | [`notebooks.md`](.claude/rules/notebooks.md)                                       |
+| Conventions (tests)       | pytest + `uv` conventions                           | rule      | [`tests.md`](.claude/rules/tests.md)                                               |
 
-### How to try them in this Codespace
+### How to try them on the JupyterHub
 
-- **Agents:** open Copilot Chat → the **agent picker** at the top of the panel
-  → choose an agent (e.g. `reproducibility-auditor`). If it is missing, run
-  **Developer: Reload Window**.
-- **Commands:** type `/` in chat and pick a prompt (e.g.
-  `/eda-summary`), or pass the input: `/write-tests target=sci_units.converters`.
+Open a terminal, `cd` to the repo root, and run `claude`. Then:
+
+- **Agents:** type `@` and pick one (e.g. `@agent-reproducibility-auditor`
+  followed by a file), or ask in words: "use the reproducibility-auditor
+  subagent on ...". For the conversational `research-pair`, run the whole
+  session as that agent: `claude --agent research-pair`.
+- **Commands:** type `/` and pick one (e.g. `/eda-summary`), or pass the
+  input: `/write-tests sci_units.converters`.
 - **Skills:** ask in plain language ("profile the text-entry dataset in
   `blocks/03-research-loop/demo-hci/starter/`") and the matching research-loop skill
   (here `profile-dataset`) loads on demand.
-- **Instructions:** open a notebook or a file under `tests/` and they apply
-  automatically.
+- **Rules:** ask Claude to work on a notebook or a file under `tests/` and they
+  apply automatically.
 
 
 ## Repo conventions
@@ -100,7 +102,7 @@ The repo tooling is adapted from [`uw-ssec/project-template`](https://github.com
 
 - **uv** owns the workshop's Python environment (`pyproject.toml`, `uv.lock`), and **[Pixi](https://pixi.sh)** owns maintainer tooling (`pixi.toml`): pre-commit, the GitHub CLI, and the `okf` project-memory CLI. Run `pixi install`, then `pixi run pre-commit-install`; run `pixi run pre-commit-all` before opening a PR.
 - [`AGENTS.md`](AGENTS.md) (and `CLAUDE.md`, which imports it) is the entry point for AI agents working **on** this repo. It points to on-demand rules in [`.agents/rules/`](.agents/rules/).
-- [`.agents/skills/`](.agents/skills/) holds maintainer skills (`commit`, `create-pr`, `okf-memory`, ...), linked from `.claude/skills`. These are separate from the participant-facing Copilot gallery in `.github/`.
+- [`.agents/skills/`](.agents/skills/) holds maintainer skills (`commit`, `create-pr`, `okf-memory`, ...), linked from `.claude/skills`. The participant-facing gallery skills live in `.github/skills/` and are linked in alongside them.
 - [`knowledge/`](knowledge/) is OKF project memory, read and written with `pixi run okf`.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), and the [AI Policy](AI_POLICY.md) if you use AI tools while contributing.
