@@ -53,7 +53,7 @@ The symposium's hackathon sessions on the following days run on the same Jupyter
 
 *Virtual Institutes for Scientific Software*
 
-Anant Mittal, Carlos García Jurado Suarez, Anshul Tambay, Vani Mandava, Robert Bates, Ryan Hausen, Eric Liu, Tina Dang, Arfon Smith
+Cordero Core, Anshul Tambay, Don Setiawan, Vani Mandava
 
 ## Contact
 

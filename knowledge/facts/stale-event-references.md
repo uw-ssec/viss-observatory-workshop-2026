@@ -3,7 +3,7 @@ type: Fact
 title: Stale text to fix for the observatory event
 description: Several files still describe the ISS/Codespaces delivery and must be updated for the Florence JupyterHub event.
 tags: [todo, docs, cleanup]
-generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-17T01:27:00Z" }
+generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-17T01:29:12Z" }
 status: stable
 code_refs: [docs/workshop-outline.md, .github/ISSUE_TEMPLATE/config.yml, pyproject.toml]
 ---
@@ -16,8 +16,8 @@ code_refs: [docs/workshop-outline.md, .github/ISSUE_TEMPLATE/config.yml, pyproje
   and Discussions are disabled on this repo.
 - `pyproject.toml` project name is `coding-with-agents-workshop`; only
   `pixi.toml` uses `viss-observatory-workshop-2026`.
-- Workshop contacts and the instructor list in `docs/workshop-outline.md`
-  are from the earlier delivery and have not been confirmed for Florence.
+- The Contact section of `docs/workshop-outline.md` still lists the earlier
+  delivery's contacts; the instructor list was updated on 2026-10-16.
 
 ## Fixed (2026-10-16)
 
