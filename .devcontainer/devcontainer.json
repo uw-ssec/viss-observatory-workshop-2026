@@ -8,7 +8,6 @@
     "vscode": {
       "extensions": [
         "marp-team.marp-vscode",
-        "GitHub.copilot-chat",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
@@ -16,7 +15,6 @@
         "PKief.material-icon-theme"
       ],
       "settings": {
-        "chat.plugins.enabled": false,
         "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "python.terminal.activateEnvInCurrentTerminal": true,
         // Keep the classic Python extension's interpreter discovery, which honors
@@ -24,22 +22,6 @@
         // Environments extension (ms-python.vscode-python-envs) runs its own
         // discovery, ignores that setting, and prompts "No Python found".
         "python.useEnvironmentsExtension": false,
-        "oaicopilot.baseUrl": "${localEnv:LITELLM_BASE_URL}/v1",
-        "oaicopilot.models": [
-          {
-              "id": "claude-sonnet-4-6",
-              "displayName": "Claude Sonnet 4.6 (UW SSEC)",
-              "owned_by": "uw-ssec",
-              "isUserSelectable": true,
-              "isDefault": true
-          },
-          {
-              "id": "claude-haiku-4-5",
-              "displayName": "Claude Haiku 4.5 (UW SSEC)",
-              "owned_by": "uw-ssec",
-              "isUserSelectable": true
-          }
-      ],
         "workbench.startupEditor": "readme",
         "files.watcherExclude": {
           "**/.git/objects/**": true,
@@ -61,15 +43,7 @@
   "mounts": [
     "source=${localWorkspaceFolderBasename}-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
   ],
-  "remoteEnv": {
-    // OAI_API_KEY is placed in remoteEnv because the LLMoxie Copilot extension runtime reads
-    // that OpenAI-compatible environment variable at activation time. Setting it only around
-    // lifecycle shell commands would not propagate to the VS Code extension host.
-    "OAI_API_KEY": "${localEnv:LITELLM_API_KEY}"
-  },
   "onCreateCommand": "bash .devcontainer/on-create.sh",
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
   "postStartCommand": "bash .devcontainer/post-start.sh",
-  "postAttachCommand": "bash .devcontainer/install-vsix.sh",
   "remoteUser": "vscode"
 }

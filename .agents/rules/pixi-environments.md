@@ -12,8 +12,9 @@ This repository uses two package managers, each with exactly one job:
 | **uv**   | `pyproject.toml`, `uv.lock` | The workshop Python 3.12 env: notebooks, `sci_units`, `workshop_agent`, pytest, ruff | `uv run <cmd>` |
 | **Pixi** | `pixi.toml`, `pixi.lock`    | Maintainer tooling: pre-commit, the GitHub CLI, `okf`, onboarding                    | `pixi run ...` |
 
-- The participant Codespace (`.devcontainer/`) installs **only uv**. Workshop
-  material must never require Pixi.
+- Participants use the event JupyterHub, whose image carries the workshop
+  dependencies; the fallback devcontainer (`.devcontainer/`) installs **only
+  uv**. Workshop material must never require Pixi.
 - Add workshop dependencies with `uv add <pkg>` (or `uv add --group dev <pkg>`)
   and commit the updated `uv.lock`. The Dockerfile warms the uv cache from
   `uv.lock`, so `uv sync --locked` must keep passing.

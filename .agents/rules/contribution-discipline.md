@@ -90,7 +90,8 @@ PRs containing multiple unrelated changes will be closed. Split them.
 
 ### Unnecessary third-party dependencies
 
-Workshop participants run on Codespaces with limited time, and the tooling
+Workshop participants run on the event JupyterHub, where every workshop
+dependency must also be added to the shared hub image, and the tooling
 environment is deliberately minimal — pre-commit, the GitHub CLI, `okf`, and the
 onboarding tooling. Adding a dependency requires justifying it against that
 baseline. Workshop dependencies go through uv and tooling dependencies through

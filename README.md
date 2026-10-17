@@ -25,17 +25,17 @@ blocks/0N-name/
 
 ## Tools used
 
-- **Copilot Chat in VSCode / Codespaces**: The Codespace ships a custom **OAI-compatible Copilot** extension ([`uw-ssec/oai-compatible-copilot`](https://github.com/uw-ssec/oai-compatible-copilot)) that points Copilot Chat at the workshop's AI gateway, so you pick the workshop's models in the model picker with no Copilot subscription or setup.
-- **Copilot Chat Skills** for Block 3's research loop: `profile-dataset`, `plan-analysis`, `explore-data`, `statistical-tests`, `draft-report`, `validate-analysis`, `handoff` ship **in-repo** as [`.github/skills/<name>/SKILL.md`](.github/skills/) and run in the same Copilot Chat panel (agent mode). The agent auto-selects a skill from its `description`, or you invoke one by name.
-- **Claude Models (via the workshop's gateway)**: the model backend, fronting Claude Sonnet 4.6 and Claude Haiku 4.5. Copilot Chat and the notebooks hit the same gateway. The notebooks use the **`litellm` Python SDK**, so the same agent loop works against any other model the gateway fronts.
+- **Claude Code in a JupyterHub terminal**: the coding agent. Your hub login comes with a key for the workshop's AI gateway, so you open a terminal and type `claude`, with no account or setup of your own. The hub's **JupyterAI** chat panel uses the same gateway.
+- **Skills** for Block 3: `fits-to-zarr`, `profile-dataset`, `handoff`, and the statistical research loop (`plan-analysis`, `explore-data`, `statistical-tests`, `draft-report`, `validate-analysis`) ship **in-repo** as [`.github/skills/<name>/SKILL.md`](.github/skills/), linked into `.claude/skills/` so Claude Code loads them. The agent auto-selects a skill from its `description`, or you invoke one by name.
+- **Claude Models (via the workshop's gateway)**: the model backend, fronting Claude Sonnet 4.6 and Claude Haiku 4.5. Claude Code and the notebooks hit the same gateway. The notebooks use the **`litellm` Python SDK**, so the same agent loop works against any other model the gateway fronts.
 - **Python 3.12 + `uv`**: environment and package management.
 - **Marp**: slides as markdown.
 
-You don't need anything installed locally: everything runs in a GitHub Codespace.
+You don't need anything installed locally: everything runs on the workshop JupyterHub, and the material arrives in your hub home folder through the workshop link.
 
 ## Agent customization gallery
 
-The [`.claude/`](.claude/) folder is a **worked gallery** of ways to customize an AI coding agent for research software engineering with Claude Code. It pairs with Block 4 ("Build Your Own Skill"): read these as references, and then write your own. Everything there is plain markdown but contains **structured prompts, tool lists, and project context**. The same ideas port to Copilot, Cursor rules, and other coding agent harnesses: the [`.github/`](.github/) folder keeps the GitHub Copilot version of every gallery file, so you can compare the two formats side by side.
+The [`.claude/`](.claude/) folder is a **worked gallery** of ways to customize an AI coding agent for research software engineering with Claude Code. It pairs with Block 4 ("Build Your Own Skill"): read these as references, and then write your own. Everything there is plain markdown but contains **structured prompts, tool lists, and project context**. The same ideas port to GitHub Copilot (custom agents, prompt files), Cursor rules, and other coding agent harnesses; only the file format changes.
 
 ### The five primitives
 
@@ -91,7 +91,7 @@ Open a terminal, `cd` to the repo root, and run `claude`. Then:
 - One folder per block, reusable layout.
 - All Python work goes through `uv` (`uv run pytest`, `uv add <pkg>`, etc.).
 - Notebooks are written to be read top-to-bottom as a teaching document, not just executed.
-- Slides are written for the **Marp for VS Code** extension (preinstalled in the Codespace). Open any `slides.md` and click the preview icon.
+- Slides are Marp markdown. Instructors preview and present them with the **Marp for VS Code** extension (the theme is registered in `.vscode/settings.json`).
 
 
 ## Maintaining this repository

@@ -6,7 +6,7 @@ contributor get started.
 ## Onboarding Workflow (First-Time Setup)
 
 ```bash
-# Workshop Python environment (uv; already done in the Codespace)
+# Workshop Python environment (uv; the fallback devcontainer does this for you)
 uv sync
 uv run pytest
 

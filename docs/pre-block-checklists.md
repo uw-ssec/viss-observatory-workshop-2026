@@ -5,9 +5,9 @@
 
 - [ ] Open the demo workspace at `blocks/01-landscape/demo/starter`.
 - [ ] Confirm the `sci_units` converters file is reset to the **buggy** state and the tests are **failing** — that's the starting point the demo fixes. Verify in the terminal: `uv run pytest -v` should show red.
-- [ ] Open **Copilot Chat** and switch to **Agent** mode. Confirm a workshop model is selected (Claude Sonnet 4.6 / Haiku 4.5).
+- [ ] Open a JupyterHub terminal in `blocks/01-landscape/demo/starter` and run `claude`. Confirm a workshop model is selected with `/model` (Claude Sonnet 4.6 / Haiku 4.5).
 - [ ] Have the demo prompt copied to a scratch buffer: *"There are failing tests in this project. Investigate, fix the bug, and verify with pytest. Make the smallest possible change."*
-- [ ] Have the demo notebook ready as the Part B fallback (kernel: `Python Environments`).
+- [ ] Have the demo notebook ready as the Part B fallback.
 
 ## Block 2: How It Actually Works (Post-Training & Tool Calling)
 

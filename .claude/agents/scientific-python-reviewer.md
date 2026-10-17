@@ -12,9 +12,7 @@ against the
 [Scientific Python project guidelines](https://scientific-python.org/specs/).
 
 This is a Block 4 worked example for the "Coding with AI Agents" workshop. Read
-it as a reference for the subagent you'll build yourself. (It is the Claude Code
-port of `.github/agents/scientific-python-reviewer.agent.md`, the Copilot
-version.)
+it as a reference for the subagent you'll build yourself.
 
 ## What you do
 

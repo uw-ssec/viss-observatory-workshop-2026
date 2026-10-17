@@ -20,7 +20,7 @@ the framing from the slides so you can answer without flipping back.
 | What's the difference between `AGENTS.md`, `copilot-instructions.md`, and `.cursor/rules`? | Same concept, **project memory** loaded into the system prompt, just a different filename per tool. It's where you put conventions every chat should know. |
 | Where does my code and data go when I use an agent? | To whoever hosts the model. Always ask: who hosts it, is the data governed (human subjects, PII, IRB, HIPAA), is it licensed or proprietary, and is it logged or trained on? Enterprise and proxy tiers usually don't retain or train; consumer tiers often do. |
 | Can I use an agent on sensitive or restricted data? | Match the **model hosting** to the **sensitivity of the data**. When in doubt, don't send it as context. A redacted snippet or a synthetic sample is often enough for the agent to help. The workshop's LLM proxy is deliberate: it keeps requests inside a controlled gateway rather than a consumer endpoint. |
-| Do I need a paid Copilot subscription to follow along? | Not here. The Codespace ships a custom OAI-compatible Copilot extension pointed at the workshop's gateway, so you pick the workshop's models in the picker with no subscription. |
+| Do I need a paid subscription (Claude, Copilot) to follow along? | Not here. Your JupyterHub login comes with a key for the workshop's gateway, so `claude` and the notebooks use the workshop's models with no subscription of your own. |
 
 ---
 
@@ -57,7 +57,7 @@ the framing from the slides so you can answer without flipping back.
 | What's the difference between fast and durable mode? | Same agents, same skills, different dial. Fast = exploratory spikes, chat against `AGENTS.md`, throwaway. Durable = an analysis headed for a paper, all phases, `validate-analysis` non-negotiable. Pick the loop length to match the half-life of the result. |
 | What is prompt injection, and should I worry about it for research? | The agent follows instructions in *everything* it reads and can't fully separate yours from instructions buried in content (a README, a web page, even a CSV header). Mitigate with read-only skills for untrusted data, no auto-approve on edits or shell, and treating agent output as untrusted until you've read it. |
 | How do I stay in control of an agent that edits my files? | git is your safety net. Commit before you start, read the diff (not the 'Done!' chat) to see exactly what changed, commit the `docs/` artifacts alongside the code, and commit per phase so a bad later phase rolls back cleanly. `git log docs/` becomes an auditable lab notebook. |
-| Could I run this same workflow in Claude Code or Cursor? | Yes. The *pattern* (named skills, markdown artifacts in `docs/`) is portable; the file format differs per tool. We keep everything in Copilot Chat here for consistency. |
+| Could I run this same workflow in Copilot or Cursor? | Yes. The *pattern* (named skills, markdown artifacts in `docs/`) is portable; the file format differs per tool. We keep everything in Claude Code here for consistency. |
 
 ---
 

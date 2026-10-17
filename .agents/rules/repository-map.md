@@ -7,9 +7,10 @@ what CI runs against it.
 
 The materials for **"Coding with AI Agents: A Hands-On Workshop for
 Scientists"**, a ~2-hour workshop from the UW Scientific Software Engineering
-Center (SSEC). Participants work in a GitHub Codespace; Copilot Chat is pointed
-at the workshop's LiteLLM gateway by a custom OAI-compatible Copilot extension.
-Repo tooling (agent rules, pre-commit, CI) was adopted from
+Center (SSEC). Participants work on the event JupyterHub (run by 2i2c), using
+Claude Code in a terminal and JupyterAI, both pointed at the workshop's LiteLLM
+gateway. Content arrives through an nbgitpuller link, so every dependency must
+be in the hub image. Repo tooling (agent rules, pre-commit, CI) was adopted from
 [uw-ssec/project-template](https://github.com/uw-ssec/project-template).
 
 **Repository Stats:**
@@ -19,8 +20,9 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 - **Languages:** Markdown, Python 3.12, Jupyter, shell
 - **Workshop environment:** uv (`pyproject.toml`, `uv.lock`)
 - **Maintainer tooling:** Pixi v0.49.0+ (`pixi.toml`, `pixi.lock`)
-- **Platform:** GitHub Codespaces (participants); macOS (osx-arm64) and Linux
-  (linux-64, linux-aarch64) for maintainers
+- **Platform:** the event JupyterHub (participants), with `.devcontainer/` as a
+  fallback; macOS (osx-arm64) and Linux (linux-64, linux-aarch64) for
+  maintainers
 - **License:** MIT
 
 ## Project Structure & Key Files
@@ -35,20 +37,19 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 │   └── _shared/slides.css       # Marp theme (registered in .vscode/settings.json)
 ├── docs/                        # Workshop outline, pre-block checklists, audience Q&A, stats reference
 ├── workshop_agent/              # Agent loop + tools extracted from Block 1's notebook (keep in sync)
-├── .devcontainer/               # Participant Codespace: uv env, Jupyter kernel, LLMoxie/LiteLLM gateway, OAI Copilot VSIX
+├── .devcontainer/               # Fallback if the hub is down: uv env, Jupyter kernel, LiteLLM gateway secrets
 ├── .github/
-│   ├── copilot-instructions.md  # Workshop content conventions (also read by Copilot)
-│   ├── agents/ prompts/ skills/ instructions/  # WORKSHOP CONTENT: Copilot versions of the gallery; skills/ is the canonical copy (Blocks 3-4)
+│   ├── skills/                  # WORKSHOP CONTENT: the canonical workshop skills (Blocks 3-4), linked into .agents/skills/
 │   ├── ISSUE_TEMPLATE/          # Issue templates (bug, feature, docs, onboard, etc.)
 │   ├── pull_request_template.md # PR template (requires pre-commit checks)
 │   ├── dependabot.yml           # Dependabot config for GitHub Actions
 │   ├── release.yml              # Release notes configuration
-│   └── workflows/               # zizmor workflow linting, Copilot cloud agent setup
+│   └── workflows/               # zizmor workflow linting
 ├── .agents/
-│   ├── rules/                   # MAINTAINER TOOLING: on-demand rules referenced by AGENTS.md
+│   ├── rules/                   # MAINTAINER TOOLING: on-demand rules referenced by AGENTS.md (workshop-content.md holds the content conventions)
 │   └── skills/                  # Maintainer skills (/commit, /create-pr, /okf-memory, ...) + links to the .github/skills/ gallery skills
 ├── .claude/
-│   ├── agents/ commands/ rules/ # WORKSHOP CONTENT: Claude Code gallery (Block 4), ported from .github/
+│   ├── agents/ commands/ rules/ # WORKSHOP CONTENT: Claude Code gallery (Block 4)
 │   └── skills -> ../.agents/skills  # Symlink so Claude Code discovers the skills
 ├── knowledge/                   # OKF project memory, managed by the okf CLI (okf-memory skill)
 ├── .vscode/                     # Recommended extensions, Marp theme registration
@@ -73,11 +74,6 @@ Repo tooling (agent rules, pre-commit, CI) was adopted from
 [zizmor](https://github.com/zizmorcore/zizmor) static analysis to lint workflow
 files for security issues. Changes to anything under `.github/workflows/` must
 keep this check passing.
-
-**Copilot cloud agent:** `.github/workflows/copilot-setup-steps.yml` prepares
-the GitHub Copilot coding agent's environment: the Pixi tooling env from
-`pixi.lock` (plus warm pre-commit hook environments) and the uv workshop env
-from `uv.lock`. Copilot reads `AGENTS.md` and `.agents/skills/` on its own.
 
 **Pre-commit.ci Integration:** The `.pre-commit-config.yaml` includes a `ci:`
 section, suggesting integration with https://pre-commit.ci for automated PR

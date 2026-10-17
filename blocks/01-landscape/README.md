@@ -19,7 +19,7 @@
 
 The demo is run **twice** during the block, against the same scenario:
 
-1. **Live with Copilot.** Open `demo/starter/`, open Copilot Chat in agent mode, and paste the prompt from [`slides.md`](slides.md). Expected: Copilot reads `tests/test_converters.py`, sees both tests fail, edits `src/sci_units/converters.py`, re-runs, and reports success.
+1. **Live with Claude Code.** Open a JupyterHub terminal, `cd blocks/01-landscape/demo/starter`, run `claude`, and paste the prompt from [`slides.md`](slides.md). Expected: Claude Code reads `tests/test_converters.py`, sees both tests fail, edits `src/sci_units/converters.py`, re-runs, and reports success.
 2. **In the notebook.** Open `demo/notebook.ipynb` and run all cells. Same scenario, same outcome, but now you can see the JSON tool calls, the system prompt, and the agent loop in plain Python.
 
 ### Reset the demo

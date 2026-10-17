@@ -71,8 +71,7 @@ PY
 
 say 5 "Configuring shell auto-activation of .venv"
 # Auto-activate the uv-managed virtualenv in every interactive shell so Python
-# is the active interpreter for VS Code terminals and Copilot Chat — not just on
-# PATH.
+# is the active interpreter for VS Code terminals — not just on PATH.
 BASHRC="${HOME}/.bashrc"
 HOOK_MARKER='# >>> uv venv activation >>>'
 if ! grep -qF "${HOOK_MARKER}" "${BASHRC}" 2>/dev/null; then

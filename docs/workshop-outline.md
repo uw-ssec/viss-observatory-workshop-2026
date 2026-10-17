@@ -1,6 +1,6 @@
 # Coding with AI Agents: A Hands-On Workshop for Scientists
 
-*2026 Interdisciplinary Science Summit, Raleigh, NC*
+*Schmidt Sciences Observatory System Symposium, near Florence, Italy, November 3, 2026*
 
 ## Overview
 
@@ -30,26 +30,24 @@ A conceptual overview of how base large language models (LLMs) are post-trained 
 
 ### Block 3: Agent-Driven Research Software Engineering (30 minutes)
 
-A live demonstration of a full analysis workflow built from reusable skills: an AI agent that profiles a dataset, plans the right statistical test for the study design, runs the exploratory analysis and confirmatory test, and drafts the methods and results sections of a paper. This block showcases how to apply agents to real research analysis and writing, and serves as a bridge to the final hands-on session. We will also discuss practical use cases (statistical analysis, debugging, exploratory data analysis, scientific writing, code review, test writing, and experiment management) as well as common failure modes (context window exhaustion, looping, poor performance on niche languages, confidently choosing the wrong statistical test) and how to mitigate them.
+A live demonstration of a research data workflow built from reusable skills: an AI agent profiles a radio-astronomy spectral cube delivered as 26 FITS files, converts it into a single Zarr cube with a production converter, verifies the conversion against the original FITS, and the cube is then used for a moment map viewed on the sky. This block showcases how to apply agents to real research data work, and serves as a bridge to the final hands-on session. We will also discuss common failure modes (context window exhaustion, looping, poor performance on niche libraries, confidently wrong answers, tool misuse, scope creep) and how to mitigate them, including verification as a quality gate and git as a safety net.
 
 ### Block 4: Build Your Own Skill (Remaining Time)
 
 Guided, hands-on session where attendees construct a simple skill of their own. This is the capstone exercise: having seen the concepts, the internals, and a polished demo, participants will now get their hands dirty wiring together the components themselves. Instructors will circulate to provide support, and scaffolded starter materials will be provided. If participants are able, they may bring along snippets of code / data they are interested in using.
 
-### Following Day: Optional Office Hours
+### Following Days: Hackathon
 
-Join us the following day to continue the work from Block 4. VISS members will be available to answer questions about how to try out your agent on your own data or workflows, writing your own skills/plugins, and agentic research workflows in general.
+The symposium's hackathon sessions on the following days run on the same JupyterHub, so the agent setup from this tutorial carries over.
 
 ## Prerequisites
 
 - Each participant must have:
-  - A GitHub account that gets added to the team: [2026-viss-ai-workshop-participants](https://github.com/orgs/schmidt-sciences/teams/2026-viss-ai-workshop-participants)
-    - **Note:** Must provide GitHub handle ahead of time for the above.
-  - A laptop with a modern browser and terminal access
+  - A laptop with a modern browser
     - **Preferred:** Chromium-based browser
 - What Schmidt Sciences and the VISS centers will provide:
-  - GitHub Codespaces allocation for organization-level access for participants
-  - AWS Bedrock instance of Claude for use by participants during the workshop and next day's office hours
+  - The event JupyterHub, with Claude Code and JupyterAI installed; login details are shared on the day
+  - Access to Claude models through the workshop's AI gateway during the tutorial and the hackathon days
 
 ## Workshop Instructors and Developers
 

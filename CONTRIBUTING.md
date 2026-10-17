@@ -41,12 +41,12 @@ Your contributions make this project better—thank you for your support! 🚀
 This repository uses two tools, each with one job:
 
 - **uv** manages the workshop's Python environment (notebooks, `sci_units`,
-  `workshop_agent`, tests). This is what participants use in the Codespace.
+  `workshop_agent`, tests). The event JupyterHub image carries the same pins.
 - **Pixi** manages maintainer tooling: pre-commit, the GitHub CLI, the `okf`
   project-memory CLI, and onboarding.
 
-The Codespace (`.devcontainer/`) already has uv set up. To work locally, install
-both.
+The fallback devcontainer (`.devcontainer/`) already has uv set up. To work
+locally, install both.
 
 #### Install uv
 

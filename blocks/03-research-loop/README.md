@@ -1,7 +1,7 @@
 # Block 3: Agent-Driven Research Software Engineering
 
 **Duration:** ~30 minutes
-**Tool focus:** a coding agent (**Claude Code** in a JupyterHub terminal, or **GitHub Copilot Chat** in agent mode) driven by workshop **skills** that live in [`.github/skills/`](../../.github/skills/). This block's demo uses `profile-dataset` and the new `fits-to-zarr` skill, and ends in [astrowidget](https://github.com/ovro-lwa/astrowidget).
+**Tool focus:** **Claude Code** in a JupyterHub terminal, driven by workshop **skills** that live in [`.github/skills/`](../../.github/skills/) (linked into `.claude/skills/`, where Claude Code finds them). This block's demo uses `profile-dataset` and the new `fits-to-zarr` skill, and ends in [astrowidget](https://github.com/ovro-lwa/astrowidget).
 
 ## Learning goals
 
@@ -42,8 +42,7 @@ This is a **live, instructor-led demo**, followed along in
 [`demo/notebook.ipynb`](demo/notebook.ipynb).
 
 1. Open the notebook and run **Setup** (section 0).
-2. Open the agent: in a JupyterHub terminal run `claude` from the repo root; in a
-   Codespace open **Copilot Chat** in **Agent** mode.
+2. Open the agent: in a JupyterHub terminal run `claude` from the repo root.
 3. Wipe any leftover artifacts from prior runs (from the repo root):
    `rm -rf blocks/03-research-loop/demo/docs/ blocks/03-research-loop/demo/output/`.
 4. Walk the four demos from [`slides.md`](slides.md) (Demo 1/4 through 4/4), one

@@ -3,7 +3,7 @@ type: Decision
 title: "Deliver the Florence tutorial on the Schmidt JupyterHub, not Codespaces"
 description: The tutorial runs on a 2i2c Schmidt events JupyterHub with JupyterAI and Claude Code via the LLMoxie gateway; Codespaces + Copilot Chat is superseded for this event.
 tags: [infrastructure, jupyterhub, codespaces, jupyterai, nbgitpuller]
-generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-15T18:17:55Z" }
+generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-17T01:27:00Z" }
 status: stable
 ---
 
@@ -46,6 +46,23 @@ status: stable
   them; Copilot still reads `.github/skills/`.
 - The Block 3 notebook was executed end to end headlessly and in a real
   JupyterLab 4.6 session; the astrowidget view renders.
+
+## Copilot and Codespaces removed (2026-10-16)
+
+Cordero, after Vani hit Codespaces-era instructions while testing on the hub:
+
+- The `.github/` Copilot copies of the gallery (`agents/`, `prompts/`,
+  `instructions/`), `copilot-instructions.md` and the Copilot cloud-agent
+  workflow were deleted. Content conventions moved to
+  `.agents/rules/workshop-content.md`; `.github/skills/` stays as the
+  canonical skills folder, linked into `.claude/skills/`.
+- `.devcontainer/` stays only as the fallback if the hub is down, with the
+  OAI-compatible Copilot VSIX, its settings and the LLMoxie session setup
+  removed. It has no coding agent installed.
+- Markdown on the hub opens in the text editor by default; the fix is a hub
+  image setting (Markdown Preview as the default viewer), not repo content.
+- Unconfirmed: which environment variables the hub sets for the gateway. The
+  Block 1 and 2 notebooks read `LITELLM_BASE_URL` and `LITELLM_API_KEY`.
 
 ## Sources
 

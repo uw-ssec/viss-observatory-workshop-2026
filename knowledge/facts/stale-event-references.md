@@ -3,7 +3,7 @@ type: Fact
 title: Stale text to fix for the observatory event
 description: Several files still describe the ISS/Codespaces delivery and must be updated for the Florence JupyterHub event.
 tags: [todo, docs, cleanup]
-generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-15T17:39:36Z" }
+generated: { by: "claude-code:claude-opus-5-5", at: "2026-10-17T01:27:00Z" }
 status: stable
 code_refs: [docs/workshop-outline.md, .github/ISSUE_TEMPLATE/config.yml, pyproject.toml]
 ---
@@ -16,9 +16,16 @@ code_refs: [docs/workshop-outline.md, .github/ISSUE_TEMPLATE/config.yml, pyproje
   and Discussions are disabled on this repo.
 - `pyproject.toml` project name is `coding-with-agents-workshop`; only
   `pixi.toml` uses `viss-observatory-workshop-2026`.
-- README, `.github/copilot-instructions.md` and the block READMEs assume
-  Codespaces + Copilot Chat; the event now runs on JupyterHub (see
-  [delivery-on-jupyterhub](../decisions/delivery-on-jupyterhub.md)).
+- Workshop contacts and the instructor list in `docs/workshop-outline.md`
+  are from the earlier delivery and have not been confirmed for Florence.
+
+## Fixed (2026-10-16)
+
+- The Codespaces + Copilot Chat assumptions in README, the block READMEs,
+  slides, notebooks, docs, rules and `.devcontainer/` were rewritten for
+  Claude Code on the JupyterHub, and the outline's event, prerequisites and
+  Block 3 description were updated. Copilot still appears where it is
+  compared with other tools (Block 1 landscape, audience Q&A, resources).
 
 ## Sources
 

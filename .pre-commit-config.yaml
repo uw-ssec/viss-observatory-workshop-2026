@@ -28,8 +28,8 @@ repos:
         types_or: [yaml, markdown, html, css, scss, javascript, json]
         args: [--prose-wrap=always]
         # knowledge/: okf owns this format; prettier folds frontmatter.
-        # Workshop content (slides, notebooks' docs, the Copilot gallery, the
-        # participant README, the Codespace config) is hand-wrapped teaching
+        # Workshop content (slides, notebooks' docs, the skills, the
+        # participant README, the devcontainer config) is hand-wrapped teaching
         # material; reformatting it is a separate, deliberate change.
         exclude: |
           (?x)^(
@@ -38,8 +38,7 @@ repos:
             docs/.*|
             README\.md|
             \.devcontainer/.*|
-            \.github/(agents|prompts|skills|instructions)/.*|
-            \.github/copilot-instructions\.md
+            \.github/skills/.*
           )$
 
   - repo: https://github.com/codespell-project/codespell

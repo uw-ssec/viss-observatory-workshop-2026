@@ -39,10 +39,3 @@ COPY --chown=${VSCODE_USER}:${VSCODE_USER} workshop_agent /tmp/uv-warmup/worksho
 RUN cd /tmp/uv-warmup \
     && uv sync --locked \
     && rm -rf /tmp/uv-warmup
-
-# Pre-download and verify the OAI-compatible Copilot VSIX so that
-# postCreateCommand can skip the network fetch on first container create.
-COPY --chown=${VSCODE_USER}:${VSCODE_USER} .devcontainer/oai-compatible-copilot-vsix.env /tmp/oai-compatible-copilot-vsix.env
-COPY --chown=${VSCODE_USER}:${VSCODE_USER} .devcontainer/post-create.sh /tmp/post-create.sh
-RUN bash /tmp/post-create.sh \
-    && rm -f /tmp/post-create.sh /tmp/oai-compatible-copilot-vsix.env
